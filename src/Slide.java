@@ -73,7 +73,7 @@ public class Slide {
 	      slideItem.draw(area.x, y, scale, g, style, view);
 	      y += slideItem.getBoundingBox(g, view, scale, style).height;
 	    }
-	  }
+	}
 
 	//Returns the scale to draw a slide
 	private float getScale(Rectangle area) {
