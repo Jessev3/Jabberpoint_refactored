@@ -45,15 +45,15 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(Slide data) {
 		if (data == null) {
 			repaint();
 			return;
 		}
-		this.presentation = presentation;
+//		this.presentation = presentation;
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+//		frame.setTitle(presentation.getTitle());
 	}
 
 //Draw the slide
@@ -69,5 +69,9 @@ public class SlideViewerComponent extends JComponent {
                  presentation.getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		slide.draw(g, area, this);
+	}
+
+	public JFrame getFrame() {
+		return this.frame;
 	}
 }

@@ -54,7 +54,8 @@ public class Presentation {
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
-			slideViewComponent.update(this, getCurrentSlide());
+			slideViewComponent.update(getCurrentSlide()); // !!!!!!!!!!!! Presentation wordt weer meegegeven?
+			slideViewComponent.getFrame().setTitle(showTitle);
 		}
 	}
 
