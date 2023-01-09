@@ -8,7 +8,7 @@
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-class DemoPresentation implements Loadable {
+class DemoPresentationReader implements Readable {
 
 	public void loadFile(Presentation presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
