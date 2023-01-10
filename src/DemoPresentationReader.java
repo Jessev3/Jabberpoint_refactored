@@ -9,7 +9,6 @@
  */
 
 class DemoPresentationReader implements Reader {
-
 	public void loadFile(Presentation presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
 		Slide slide;
