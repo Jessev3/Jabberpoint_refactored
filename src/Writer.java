@@ -1,5 +1,5 @@
 import java.io.IOException;
 
-public interface Writable {
+public interface Writer {
     void saveFile(Presentation p, String fn) throws IOException;
 }

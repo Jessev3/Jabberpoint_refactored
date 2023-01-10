@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
-public class XMLWriter implements Writable{
+public class XMLWriter implements Writer {
     public void saveFile(Presentation presentation, String filename) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(filename));
         out.println("<?xml version=\"1.0\"?>");

@@ -1,5 +1,5 @@
 import java.io.IOException;
 
-public interface Readable {
+public interface Reader {
     void loadFile(Presentation p, String fn) throws IOException;
 }

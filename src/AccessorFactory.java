@@ -1,5 +1,5 @@
 public class AccessorFactory {
-    public static Readable createReader(String readerType) {
+    public static Reader createReader(String readerType) {
         return switch (readerType) {
             case "DEMO" -> new DemoPresentationReader();
             case "XML" -> new XMLReader();
@@ -7,7 +7,7 @@ public class AccessorFactory {
         };
     }
 
-    public static Writable createWriter(String writerType) {
+    public static Writer createWriter(String writerType) {
         if (writerType.equals("XML")) {
             return new XMLWriter();
         }

@@ -10,7 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
-public class XMLReader implements Readable{
+public class XMLReader implements Reader {
     /** Default API to use. */
     protected static final String DEFAULT_API_TO_USE = "dom";
 
