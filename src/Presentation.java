@@ -25,7 +25,7 @@ public class Presentation implements PresentationViewerComponent{
 	}
 
 	public int getSize() {
-		return showList.size();
+		return this.showList.size();
 	}
 
 	public String getTitle() {
@@ -33,43 +33,43 @@ public class Presentation implements PresentationViewerComponent{
 	}
 
 	public void setTitle(String nt) {
-		showTitle = nt;
+		this.showTitle = nt;
 	}
 
 	//Returns the number of the current slide
 	public int getSlideNumber() {
-		return currentSlideNumber;
+		return this.currentSlideNumber;
 	}
 
 	//Change the current slide number and report it the the window
 	public void setSlideNumber(int number) {
-		currentSlideNumber = number;
+		this.currentSlideNumber = number;
 		this.mediator.setSlideNumber(getCurrentSlide());
 	}
 
 	//Navigate to the previous slide unless we are at the first slide
 	public void prevSlide() {
-		if (currentSlideNumber > 0) {
-			setSlideNumber(currentSlideNumber - 1);
+		if (this.currentSlideNumber > 0) {
+			setSlideNumber(this.currentSlideNumber - 1);
 	    }
 	}
 
 	//Navigate to the next slide unless we are at the last slide
 	public void nextSlide() {
-		if (currentSlideNumber < (showList.size()-1)) {
-			setSlideNumber(currentSlideNumber + 1);
+		if (this.currentSlideNumber < (this.showList.size()-1)) {
+			setSlideNumber(this.currentSlideNumber + 1);
 		}
 	}
 
 	//Remove the presentation
 	void clear() {
-		showList = new ArrayList<Slide>();
+		this.showList = new ArrayList<Slide>();
 		setSlideNumber(-1);
 	}
 
 	//Add a slide to the presentation
 	public void append(Slide slide) {
-		showList.add(slide);
+		this.showList.add(slide);
 	}
 
 	//Return a slide with a specific number
@@ -77,12 +77,12 @@ public class Presentation implements PresentationViewerComponent{
 		if (number < 0 || number >= getSize()){
 			return null;
 	    }
-			return (Slide)showList.get(number);
+			return (Slide)this.showList.get(number);
 	}
 
 	//Return the current slide
 	public Slide getCurrentSlide() {
-		return getSlide(currentSlideNumber);
+		return getSlide(this.currentSlideNumber);
 	}
 
 	public void exit(int n) {

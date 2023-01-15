@@ -28,7 +28,7 @@ public class JabberPoint {
 		PresentationViewer presentationViewer = new PresentationViewer();
 		presentationViewer.registerComponent(new Presentation());
 		presentationViewer.registerComponent(new SlideViewerFrame(JABVERSION));
-		presentationViewer.registerComponent(SlideViewerComponentFactory.createSlideViewerComponent());
+		presentationViewer.registerComponent(new SlideViewerComponent());
 
 		presentationViewer.getSlideViewerFrame().setupWindow();
 

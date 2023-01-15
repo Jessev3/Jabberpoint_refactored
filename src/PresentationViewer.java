@@ -56,7 +56,7 @@ public class PresentationViewer implements Mediator {
 
     @Override
     public void setTitle() {
-        slideViewerFrame.setTitle(getTitle());
+        this.slideViewerFrame.setTitle(getTitle());
     }
 
     @Override

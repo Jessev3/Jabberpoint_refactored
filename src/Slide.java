@@ -20,22 +20,22 @@ public class Slide {
 	private Vector<SlideItem> items; //The SlideItems are kept in a vector
 
 	public Slide() {
-		items = new Vector<SlideItem>();
+		this.items = new Vector<>();
 	}
 
 	//Add a SlideItem
 	public void append(SlideItem anItem) {
-		items.addElement(anItem);
+		this.items.addElement(anItem);
 	}
 
 	//Return the title of a slide
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	//Change the title of a slide
 	public void setTitle(String newTitle) {
-		title = newTitle;
+		this.title = newTitle;
 	}
 
 	//Create a TextItem out of a String and add the TextItem
@@ -43,19 +43,14 @@ public class Slide {
 		append(new TextItem(level, message));
 	}
 
-	//Returns the SlideItem
-	public SlideItem getSlideItem(int number) {
-		return items.elementAt(number);
-	}
-
 	//Return all the SlideItems in a vector
 	public Vector<SlideItem> getSlideItems() {
-		return items;
+		return this.items;
 	}
 
 	//Returns the size of a slide
 	public int getSize() {
-		return items.size();
+		return this.items.size();
 	}
 
 	//Draws the slide

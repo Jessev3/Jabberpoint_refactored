@@ -24,7 +24,6 @@ public class SlideViewerComponent extends JComponent implements PresentationView
 	private JFrame frame;
 	
 	private static final long serialVersionUID = 227L;
-	
 	private static final Color BGCOLOR = Color.white;
 	private static final Color COLOR = Color.black;
 	private static final String FONTNAME = "Dialog";
@@ -35,7 +34,7 @@ public class SlideViewerComponent extends JComponent implements PresentationView
 
 	public SlideViewerComponent() {
 		setBackground(BGCOLOR);
-		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+		this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 	}
 
 	public Dimension getPreferredSize() {
@@ -56,15 +55,15 @@ public class SlideViewerComponent extends JComponent implements PresentationView
 	public void paintComponent(Graphics g) {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
-		if (mediator.getSlideNumber() < 0 || slide == null) {
+		if (this.mediator.getSlideNumber() < 0 || this.slide == null) {
 			return;
 		}
-		g.setFont(labelFont);
+		g.setFont(this.labelFont);
 		g.setColor(COLOR);
-		g.drawString("Slide " + (1 + mediator.getSlideNumber()) + " of " +
-                 mediator.getSize(), XPOS, YPOS);
+		g.drawString("Slide " + (1 + this.mediator.getSlideNumber()) + " of " +
+				this.mediator.getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-		slide.draw(g, area, this);
+		this.slide.draw(g, area, this);
 	}
 
 	@Override
