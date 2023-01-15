@@ -23,14 +23,13 @@ public class JabberPoint {
 
 	/** The main program */
 	public static void main(String[] argv) {
-		Mediator presentationViewer = new PresentationViewer();
 		Style.createStyles();
-//		Presentation presentation = new Presentation();
+
+		PresentationViewer presentationViewer = new PresentationViewer();
 		presentationViewer.registerComponent(new Presentation());
 		presentationViewer.registerComponent(new SlideViewerFrame(JABVERSION));
-		presentationViewer.registerComponent(new SlideViewerComponent());
+		presentationViewer.registerComponent(SlideViewerComponentFactory.createSlideViewerComponent());
 
-		presentationViewer.getPresentation().clear();
 		presentationViewer.getSlideViewerFrame().setupWindow();
 
 		try {

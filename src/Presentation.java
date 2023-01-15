@@ -16,11 +16,12 @@ import java.util.ArrayList;
 public class Presentation implements PresentationViewerComponent{
 	private Mediator mediator;
 	private String showTitle; //The title of the presentation
-	private ArrayList<Slide> showList = null; //An ArrayList with slides
-	private int currentSlideNumber = 0; //The number of the current slide
+	private ArrayList<Slide> showList; //An ArrayList with slides
+	private int currentSlideNumber; //The number of the current slide
 
 	public Presentation() {
-//		clear();
+		this.showList = new ArrayList<>();
+		this.currentSlideNumber = 0;
 	}
 
 	public int getSize() {

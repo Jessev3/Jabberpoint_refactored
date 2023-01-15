@@ -24,7 +24,6 @@ public class SlideViewerFrame extends JFrame implements PresentationViewerCompon
 	
 	public SlideViewerFrame(String title) {
 		super(title);
-//		setupWindow();
 	}
 
 //Setup the GUI
