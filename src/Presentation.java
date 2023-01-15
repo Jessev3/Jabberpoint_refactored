@@ -13,20 +13,14 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Presentation {
+public class Presentation implements PresentationViewerComponent{
+	private Mediator mediator;
 	private String showTitle; //The title of the presentation
 	private ArrayList<Slide> showList = null; //An ArrayList with slides
 	private int currentSlideNumber = 0; //The number of the current slide
-	private SlideViewerComponent slideViewComponent; //The view component of the slides
 
 	public Presentation() {
-		slideViewComponent = null;
-		clear();
-	}
-
-	public Presentation(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
-		clear();
+//		clear();
 	}
 
 	public int getSize() {
@@ -34,15 +28,11 @@ public class Presentation {
 	}
 
 	public String getTitle() {
-		return showTitle;
+		return this.showTitle;
 	}
 
 	public void setTitle(String nt) {
 		showTitle = nt;
-	}
-
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
 	}
 
 	//Returns the number of the current slide
@@ -53,9 +43,7 @@ public class Presentation {
 	//Change the current slide number and report it the the window
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
-		if (slideViewComponent != null) {
-			slideViewComponent.update(this, getCurrentSlide());
-		}
+		this.mediator.setSlideNumber(getCurrentSlide());
 	}
 
 	//Navigate to the previous slide unless we are at the first slide
@@ -98,5 +86,15 @@ public class Presentation {
 
 	public void exit(int n) {
 		System.exit(n);
+	}
+
+	@Override
+	public void setMediator(Mediator mediator) {
+		this.mediator = mediator;
+	}
+
+	@Override
+	public String getComponentName() {
+		return "Presentation";
 	}
 }

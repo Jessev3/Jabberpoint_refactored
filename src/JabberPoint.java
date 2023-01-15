@@ -23,18 +23,23 @@ public class JabberPoint {
 
 	/** The main program */
 	public static void main(String[] argv) {
-		
+		Mediator presentationViewer = new PresentationViewer();
 		Style.createStyles();
-		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
+//		Presentation presentation = new Presentation();
+		presentationViewer.registerComponent(new Presentation());
+		presentationViewer.registerComponent(new SlideViewerFrame(JABVERSION));
+		presentationViewer.registerComponent(new SlideViewerComponent());
+
+		presentationViewer.getPresentation().clear();
+		presentationViewer.getSlideViewerFrame().setupWindow();
 
 		try {
 			if (argv.length == 0) { //a demo presentation
-				AccessorFactory.createReader("DEMO").loadFile(presentation, "");
+				AccessorFactory.createReader("DEMO").loadFile(presentationViewer.getPresentation(), "");
 			} else {
-				AccessorFactory.createReader("XML").loadFile(presentation, argv[0]);
+				AccessorFactory.createReader("XML").loadFile(presentationViewer.getPresentation(), argv[0]);
 			}
-			presentation.setSlideNumber(0);
+			presentationViewer.getPresentation().setSlideNumber(0);
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,

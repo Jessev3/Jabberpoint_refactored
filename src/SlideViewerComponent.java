@@ -17,11 +17,10 @@ import javax.swing.JFrame;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class SlideViewerComponent extends JComponent {
-		
+public class SlideViewerComponent extends JComponent implements PresentationViewerComponent {
+	private Mediator mediator;
 	private Slide slide; //The current slide
 	private Font labelFont; //The font for labels
-	private Presentation presentation; //The presentation
 	private JFrame frame;
 	
 	private static final long serialVersionUID = 227L;
@@ -34,40 +33,47 @@ public class SlideViewerComponent extends JComponent {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
-		setBackground(BGCOLOR); 
-		presentation = pres;
+	public SlideViewerComponent() {
+		setBackground(BGCOLOR);
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
-		this.frame = frame;
 	}
 
 	public Dimension getPreferredSize() {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(Slide data) {
 		if (data == null) {
 			repaint();
 			return;
 		}
-		this.presentation = presentation;
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+		this.mediator.setTitle();
 	}
 
 //Draw the slide
 	public void paintComponent(Graphics g) {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (mediator.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
 		g.setFont(labelFont);
 		g.setColor(COLOR);
-		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                 presentation.getSize(), XPOS, YPOS);
+		g.drawString("Slide " + (1 + mediator.getSlideNumber()) + " of " +
+                 mediator.getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		slide.draw(g, area, this);
+	}
+
+	@Override
+	public void setMediator(Mediator mediator) {
+		this.mediator = mediator;
+	}
+
+	@Override
+	public String getComponentName() {
+		return "SlideViewerComponent";
 	}
 }
