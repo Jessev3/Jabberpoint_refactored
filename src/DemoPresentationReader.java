@@ -12,7 +12,7 @@ class DemoPresentationReader implements Reader {
 	public void loadFile(Presentation presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
 		Slide slide;
-		slide = SlideFactory.createSlide();
+		slide = new Slide();
 		slide.setTitle("JabberPoint");
 		slide.append(1, "The Java prestentation tool");
 		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
@@ -26,7 +26,7 @@ class DemoPresentationReader implements Reader {
 		slide.append(3, "Quit: q or Q");
 		presentation.append(slide);
 
-		slide = SlideFactory.createSlide();
+		slide = new Slide();
 		slide.setTitle("Demonstration of levels and styles");
 		slide.append(1, "Level 1");
 		slide.append(2, "Level 2");
@@ -37,7 +37,7 @@ class DemoPresentationReader implements Reader {
 		slide.append(4, "And this is level 4");
 		presentation.append(slide);
 
-		slide = SlideFactory.createSlide();
+		slide = new Slide();
 		slide.setTitle("The third slide");
 		slide.append(1, "To open a new presentation,");
 		slide.append(2, "use File->Open from the menu.");
